@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+    {% block titulo %}
+        {% include 'core/components/titulo1.html' with titulo="Clientes" %}
+    {% endblock titulo %}
+    
+    {% block contenido %}
+    <a href="{% url 'core:home' %}">Ir al menu principal</a>
+
+    <div class="row row-cols-1 row-cols-md-2 ">
+            {% for cliente in clientes %}
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+                        <p class="card-text text-muted ">{{ cliente.nacimiento }}</p>
+                        {% if cliente.pais_origen_id %}
+                            <p class="card-text">{{ cliente.pais_origen_id }}</p>
+                        {% else %}
+                            <p class="card-text">No registra país de origen.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <!-- Aquí podrías poner más contenido si deseas -->
+        </div>
+    </div>
+    
+    {% endblock contenido %}
+    
+    
+
