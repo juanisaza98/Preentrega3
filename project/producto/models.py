@@ -13,3 +13,16 @@ class ProductoCategoria(models.Model):
     class Meta:
         verbose_name="categoria de productos"
         verbose_name_plural="categorias de productos"
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=200, unique=True)
+    descripcion = models.CharField(max_length=250, null=True, blank = True, verbose_name="descripcion")
+    precio = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.nombre
+    
+    class Meta:
+        verbose_name="producto"
+        verbose_name_plural="productos"
+    
