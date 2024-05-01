@@ -2,7 +2,7 @@ from django.db import models
 from cliente.models import Cliente
 from producto.models import Producto
 # Create your models here.
-class InfoProducto(models.Model):
+class InfoProductoPedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=False, null=False, verbose_name="cliente")
     producto_pedido = models.ForeignKey(Producto, on_delete=models.CASCADE, blank=False, null=False, verbose_name="producto")
 
