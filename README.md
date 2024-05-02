@@ -1,50 +1,38 @@
-# Comandos
+# Proyecto coderhouse
 
-`mkdir nueva_carpeta`
-> Crea una carpeta llamada nueva_carpeta
+Comision: 54135
 
-`ls`
-> Muestra la lista de archivos
+Alumno: Juan Manuel Isaza Giraldo
 
-`cd nueva_carpeta`
-> Cambia de carpeta
+# Acerca del proyecto
+Tercera entrega enfocada en formularios en herencias de HTML y formularios para bases de datos ingresando informacion a diferentes a models.
 
-`pwd`
-> Muestra la ruta actual
+Inicio de ecommerce para emprendimiento de Dips
 
-`python -m venv .venv`
-> Crea un entorno virtual llamado .venv
+Pestana Home: Solo presenta una imagen y el eslogan de la marca
 
-`source .venv/bin/activate`
-> Activa el entorno virtual en Linux o Mac
+Pestana Clientes: Permite registro y visualizacion de paises y clientes activos
 
-`.\.venv\Scripts\activate`
-> Activa el entorno virtual en Windows
+Pestana Productos: Permite registro y visualizacion de categorias de productos y de productos disponibles
 
-`pip list`
-> Muestra la lista de paquetes disponibles en el entorno virtual
+Pestana Pedidos: Permite registro y visualizacion de pedidos segun productos disponibles y despliega el precio
 
-`pip install django`
-> Instala Django
+# Aplicaciones
+Ecommerce
 
-`django-admin startproject config .`
-> Crea un proyecto en el directorio actual
+# Modelos
+Clientes
+Productos
+Pedido
 
-`python manage.py runserver`
-> Ejecuta el servidor
+# Mejoras futuras
+Se pretende mejorar la visualizacion de la pagina, con colores que tengan mas coherencia con los colores de la marca
 
-`python manage.py startapp app`
-> Crea una nueva aplicación llamada app
+Mejora en las dinamicas de la pagina, con mas imagenes y mas interaccion con el usuario
 
-`python manage.py makemigrations`
-> Crea las migraciones, que son archivos Python encargados de la base de datos
+Se pretende agregar "Carrito de mercado" para compras de varios productos
 
-`python manage.py migrate`
-> Ejecuta las migraciones, para que se realicen los cambios en la base de datos
+Agregar funciones de pago en linea
 
-`python manage.py createsuperuser`
-> Crea un usuario administrador para acceder a 127.0.0.1:8000/admin
+Cambio de plantilla de bootstrap
 
-## Crear archivo de requisitos> requirements.txt
-
-`pip freeze>> requirements.txt`
