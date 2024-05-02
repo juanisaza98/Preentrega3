@@ -1,32 +1,70 @@
 {% extends 'core/base.html' %}
-    {% block titulo %}
-        {% include 'core/components/titulo1.html' with titulo="Clientes" %}
-    {% endblock titulo %}
-    
-    {% block contenido %}
-    <a href="{% url 'core:home' %}">Ir al menu principal</a>
+{% block titulo %}
+    {% include 'core/components/titulo1.html' with titulo="Clientes" %}
+{% endblock titulo %}
 
-    <div class="row row-cols-1 row-cols-md-2 ">
-            {% for cliente in clientes %}
-                <div class="card my-3">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
-                        <p class="card-text text-muted ">{{ cliente.nacimiento }}</p>
-                        {% if cliente.pais_origen_id %}
-                            <p class="card-text">{{ cliente.pais_origen_id }}</p>
-                        {% else %}
-                            <p class="card-text">No registra país de origen.</p>
-                        {% endif %}
-                    </div>
+{% block contenido %}
+<div class="d-flex flex-column">
+    <a href="{% url 'core:home' %}" class="btn btn-primary mb-3">Ir al menú principal</a>
+    <a href="{% url 'cliente:pais_create' %}" class="btn btn-primary">Crear nuevo país</a>
+</div>
+
+<div class="row align-items-center my-5">
+    <h1 class="pb-lg-3 text-primary fs-2">
+        Paises creados
+    </h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    {% for pais in paises %}
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pais.nombre }}</h5>
                 </div>
-            {% endfor %}
+            </div>
         </div>
-        <div class="col-md-6">
-            <!-- Aquí podrías poner más contenido si deseas -->
+    {% endfor %}
+</div>
+
+
+<div class="d-flex flex-column">
+    <a href="{% url 'cliente:cliente_create' %}" class="btn btn-primary">Crear nuevo cliente</a>
+</div>
+
+<div class="row align-items-center my-5">
+    <h1 class="pb-lg-3 text-primary fs-2">
+        Clientes activos
+    </h1>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2">
+    {% for cliente in clientes %}
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+                <p class="card-text text-muted">{{ cliente.nacimiento }}</p>
+                {% if cliente.pais_origen_id %}
+                    <p class="card-text">{{ cliente.pais_origen_id }}</p>
+                {% else %}
+                    <p class="card-text">No registra país de origen.</p>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    
-    {% endblock contenido %}
-    
+    {% endfor %}
+</div>
+
+
+<div class="row align-items-center my-5">
+    <h1 class="pb-lg-3 text-primary fs-2">
+        
+    </h1>
+</div>
+
+{% endblock contenido %}
+
+
+
+
     
 
