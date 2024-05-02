@@ -4,7 +4,10 @@
     {% endblock titulo %}
     
     {% block contenido %}
-    <a href="{% url 'core:home' %}">Ir al menu principal</a>
+    <div class="d-flex flex-column">
+        <a href="{% url 'core:home' %}" class="btn btn-primary mb-3">Ir al menú principal</a>
+        <a href="{% url 'pedido:pedido_create' %}" class="btn btn-primary">Crear nuevo pedido</a>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-2 ">
         {% for pedido in pedidos %}
@@ -12,6 +15,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ pedido.cliente }} </h2>
                 <p class="card-text text-muted ">{{ pedido.producto_pedido }}</p>
+                <p class="card-text text-muted ">El valor a pagar es {{ pedido.producto_pedido.precio }}</p>
             </div>
         </div>
     {% endfor %}
@@ -19,6 +23,12 @@
         <div class="col-md-6">
             <!-- Aquí podrías poner más contenido si deseas -->
         </div>
+    </div>
+    
+    <div class="row align-items-center my-5">
+        <h1 class="pb-lg-3 text-primary fs-2">
+            
+        </h1>
     </div>
     
     {% endblock contenido %}
