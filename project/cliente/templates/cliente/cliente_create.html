@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    {% include 'core/components/titulo1.html' with titulo="Creacion clientes" %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <form action="" method="post"> {% csrf_token %}
+        <table>
+            {{form_cliente_create}}
+        </table>
+    
+    <button type="submit">Guardar</button>
+    </form>
+{% endblock contenido %}
