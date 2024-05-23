@@ -8,13 +8,19 @@
 {% endblock titulo %}
 
 {% block contenido %}
+
+    {% if user.is_authenticated %}
+        {{mensaje}}
+        <p class="fs-2 ">Bienvenido {{user.username}} </p>
+        
+    {% endif %}
      <!-- Heading Row-->
      <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/DippinHome.webp' %}" alt="..." /></div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">Dips artesanales para compartir</h1>
             <p>"Happiness is sharing and dipping!"</p>
-            <a class="btn btn-primary" href="https://wa.me/573052559969" target="_blank">Whatsapp</a>
+            <a class="btn btn-success " href="https://wa.me/573052559969" target="_blank">Whatsapp</a>
         </div>
     </div>
     <!-- Call to Action-->

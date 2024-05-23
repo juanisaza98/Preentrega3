@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 # Create your views here.
 from . import models, forms
@@ -39,7 +39,19 @@ def categoria_create(request):
 #         form_producto_create = forms.ProductoForm()
 #     return render(request, "producto/producto_create.html", context={"form_producto_create": form_producto_create})
 
-class ProductoCreate(CreateView):
+class StaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff
+    
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            # Redirigir a una página específica si el usuario está autenticado pero no es staff
+            return redirect('producto:home')
+        else:
+            # Dejar el comportamiento por defecto (redirigir a la página de login)
+            return super().handle_no_permission()
+
+class ProductoCreate(StaffRequiredMixin, CreateView):
     model = models.Producto
     form_class = forms.ProductoForm
     template_name = 'producto/producto_create.html'
@@ -51,7 +63,7 @@ class ProductoCreate(CreateView):
 #     query = models.Producto.objects.get(id=pk)
 #     return render(request, "producto/producto_detail.html", {"producto": query})
 
-class ProductoDetail(DetailView):
+class ProductoDetail(LoginRequiredMixin, DetailView):
     model = models.Producto
     context_object_name = 'producto'
 
@@ -67,7 +79,7 @@ class ProductoDetail(DetailView):
 #         form_producto_update = forms.ProductoForm(instance=query)
 #     return render(request, "producto/producto_update.html", context={"form_producto_update": form_producto_update})
 
-class ProductoUpdate(UpdateView):
+class ProductoUpdate(StaffRequiredMixin, UpdateView):
     model = models.Producto
     form_class = forms.ProductoForm
     template_name = 'producto/producto_update.html'
@@ -81,7 +93,7 @@ class ProductoUpdate(UpdateView):
 #        return redirect("producto:home")
 #     return render(request, "producto/producto_delete.html", context={"producto": query})
 
-class ProductoDelete(DeleteView):
+class ProductoDelete(StaffRequiredMixin, DeleteView):
     model = models.Producto
     template_name = 'producto/producto_delete.html'
     success_url = reverse_lazy('producto:home')
