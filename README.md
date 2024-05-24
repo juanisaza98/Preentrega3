@@ -15,7 +15,7 @@ Entrega final enfocada en los siguientes items.
 
 💫 Video de no más de 10 minutos
 
-https://youtu.be/uz1D_2YuWbI
+https://youtu.be/-xlEOlAghJM
 
 🕵️ Estructura interna:
 
