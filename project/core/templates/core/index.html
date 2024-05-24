@@ -9,11 +9,12 @@
 
 {% block contenido %}
 
-    {% if user.is_authenticated %}
-        {{mensaje}}
-        <p class="fs-2 ">Bienvenido {{user.username}} </p>
-        
-    {% endif %}
+{% if user.is_authenticated %}
+    {{mensaje}}
+    <p class="fs-4 fw-bold">Bienvenido {{user.username}}</p>
+{% else %}
+    <p class="fs-4 fw-bold">Regístrate o inicia sesion en caso de tener usuario para conocer el detalle de nuestros productos, o presiona el botón de WhatsApp para contactarnos</p>
+{% endif %}
      <!-- Heading Row-->
      <div class="row gx-4 gx-lg-5 align-items-center my-5">
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/DippinHome.webp' %}" alt="..." /></div>

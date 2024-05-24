@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    {% include 'core/components/titulo1.html' with titulo="Detalle de categoria" %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title display-4">{{ categoria.nombre }}</h2>
+                {% if categoria.descripcion %}
+                    <p class="card-text lead">{{ categoria.descripcion }}</p>
+                {% else %}
+                    <p class="card-text">categoria sin descripción.</p>
+                {% endif %}
+                <a href="{% url 'producto:home' %}" class="btn btn-danger btn-lg mt-3 ">Volver a productos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-center my-5">
+        <h1 class="pb-lg-3 text-primary fs-2">
+            
+        </h1>
+    </div>
+{% endblock contenido %}
+

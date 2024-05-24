@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    {% include 'core/components/titulo1.html' with titulo="Detalle de pedido" %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title display-4">{{ pedido.cliente }}</h2>
+                <p class="card-text text-muted h4">{{pedido.cantidad}} {{ pedido.producto_pedido }} $COP</p>
+                <p class="card-text lead">Precio total: {{ pedido.precio_total }}$COP</p>
+                <p class="card-text lead">Fecha venta: {{ pedido.fecha_venta }} </p>
+                <a href="{% url 'pedido:home' %}" class="btn btn-primary  btn-lg mt-3 ">Volver a pedidos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-center my-5">
+        <h1 class="pb-lg-3 text-primary fs-2">
+            
+        </h1>
+    </div>
+{% endblock contenido %}
+

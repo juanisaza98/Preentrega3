@@ -1,13 +1,13 @@
 {% extends 'core/base.html' %}
 
 {% block titulo %}
-    {% include 'core/components/titulo1.html' with titulo="Editar productos" %}
+    {% include 'core/components/titulo1.html' with titulo="Editar categorias" %}
 {% endblock titulo %}
 
 {% block contenido %}
     <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
         <table>
-            {{form.as_table}}
+            {{form_categoria_update}}
         </table>
     
     <button type="submit">Guardar</button>

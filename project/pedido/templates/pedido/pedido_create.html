@@ -7,7 +7,7 @@
 {% block contenido %}
     <form action="" method="post"> {% csrf_token %}
         <table>
-            {{form_pedido_create}}
+            {{form.as_table}}
         </table>
     
     <button type="submit">Guardar</button>

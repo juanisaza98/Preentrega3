@@ -6,22 +6,32 @@
 
 {% block contenido %}
     <div class="row row-cols-1 row-cols-md-2">
-        
-            <div class="card my-3">
-                <div class="card-body">
-                    <h2 class="card-title">{{ producto.nombre }}</h2>
-                    <p class="card-text text-muted">{{ producto.precio }} $COP</p>
-                    {% if producto.descripcion %}
-                        <p class="card-text">{{ producto.descripcion }}</p>
-                    {% else %}
-                        <p class="card-text">Producto sin descripcion.</p>
-                    {% endif %}
-                </div>
+        <div class="card my-3">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top img-fluid w-100" alt="{{ producto.nombre }}" style="max-height: 400px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title display-4">{{ producto.nombre }}</h2>
+                <p class="card-text text-muted h4">{{ producto.precio }} $COP</p>
+                {% if producto.descripcion %}
+                    <p class="card-text lead">{{ producto.descripcion }}</p>
+                {% else %}
+                    <p class="card-text">Producto sin descripción.</p>
+                {% endif %}
+                <p class="card-text lead">stock disponible: {{ producto.stock_disponible }} unidades</p>
+                {% if user.is_authenticated and user.is_staff %}
+                    <p class="card-text lead">Ultima fecha actualizacion: {{ producto.fecha_actualizacion }} </p>
+                {% endif %}
+                <a href="https://wa.me/573052559969" class="btn btn-success btn-lg mt-3">Comprar ahora</a>
+                <a href="{% url 'producto:home' %}" class="btn btn-danger btn-lg mt-3 ">Volver a productos</a>
             </div>
+        </div>
     </div>
 
-    <div class="d-flex flex-column">
-        <a href="{% url 'producto:home' %}" class="btn btn-primary">Volver a productos</a>
+    <div class="row align-items-center my-5">
+        <h1 class="pb-lg-3 text-primary fs-2">
+            
+        </h1>
     </div>
-
 {% endblock contenido %}
+
